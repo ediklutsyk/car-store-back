@@ -1,8 +1,8 @@
-package com.example.tvstore.converter;
+package com.store.car.converter;
 
-import com.example.tvstore.common.util.EntityDtoConverter;
-import com.example.tvstore.dto.TelevisionSetDto;
-import com.example.tvstore.entity.TelevisionSet;
+import com.store.car.common.util.EntityDtoConverter;
+import com.store.car.dto.TelevisionSetDto;
+import com.store.car.entity.TelevisionSet;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,4 +1,4 @@
-package com.example.tvstore;
+package com.store.car;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class TvStoreApplicationTests {
+public class ApplicationTests {
 
 	@Test
 	public void contextLoads() {

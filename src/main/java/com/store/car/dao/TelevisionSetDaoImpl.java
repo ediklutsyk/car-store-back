@@ -1,10 +1,10 @@
-package com.example.tvstore.dao;
+package com.store.car.dao;
 
-import com.example.tvstore.common.entity.Product;
-import com.example.tvstore.entity.TelevisionSet;
-import com.example.tvstore.entity.TelevisionSetImage;
-import com.example.tvstore.mapper.TelevisionSetImageMapper;
-import com.example.tvstore.mapper.TelevisionSetMapper;
+import com.store.car.common.entity.Product;
+import com.store.car.entity.TelevisionSet;
+import com.store.car.entity.TelevisionSetImage;
+import com.store.car.mapper.TelevisionSetImageMapper;
+import com.store.car.mapper.TelevisionSetMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;

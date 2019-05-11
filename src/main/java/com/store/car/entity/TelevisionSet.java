@@ -1,9 +1,11 @@
-package com.example.tvstore.dto;
+package com.store.car.entity;
 
-public class TelevisionSetDto {
+import com.store.car.common.entity.Product;
 
-    private int id;
-    private String name;
+import java.util.Objects;
+
+public class TelevisionSet extends Product {
+
     private String diagonal;
     private String resolution;
     private String digitalTunerBand;
@@ -20,22 +22,6 @@ public class TelevisionSetDto {
     private String weightWithStand;
     private String mainImage;
     private int amount;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getDiagonal() {
         return diagonal;
@@ -157,11 +143,40 @@ public class TelevisionSetDto {
         this.mainImage = mainImage;
     }
 
+    @Override
     public int getAmount() {
         return amount;
     }
 
+    @Override
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TelevisionSet that = (TelevisionSet) o;
+        return wiFiModule == that.wiFiModule &&
+                Double.compare(that.price, price) == 0 &&
+                Objects.equals(diagonal, that.diagonal) &&
+                Objects.equals(resolution, that.resolution) &&
+                Objects.equals(digitalTunerBand, that.digitalTunerBand) &&
+                Objects.equals(manufacturer, that.manufacturer) &&
+                Objects.equals(specialProperty, that.specialProperty) &&
+                Objects.equals(description, that.description) &&
+                Objects.equals(platform, that.platform) &&
+                Objects.equals(update, that.update) &&
+                Objects.equals(sweep, that.sweep) &&
+                Objects.equals(color, that.color) &&
+                Objects.equals(sizeWithStand, that.sizeWithStand) &&
+                Objects.equals(weightWithStand, that.weightWithStand) &&
+                Objects.equals(mainImage, that.mainImage);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(diagonal, resolution, digitalTunerBand, wiFiModule, manufacturer, specialProperty, description, price, platform, update, sweep, color, sizeWithStand, weightWithStand, mainImage);
     }
 }

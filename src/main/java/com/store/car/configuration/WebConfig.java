@@ -1,4 +1,4 @@
-package com.example.tvstore.configuration;
+package com.store.car.configuration;
 
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcRegistrations;
 import org.springframework.context.annotation.Bean;

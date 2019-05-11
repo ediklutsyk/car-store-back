@@ -1,7 +1,7 @@
-package com.example.tvstore.controller;
+package com.store.car.controller;
 
-import com.example.tvstore.dto.TelevisionSetDto;
-import com.example.tvstore.service.TelevisionSetService;
+import com.store.car.dto.TelevisionSetDto;
+import com.store.car.service.TelevisionSetService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

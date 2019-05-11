@@ -1,4 +1,4 @@
-package com.example.tvstore.common.util;
+package com.store.car.common.util;
 
 public interface EntityDtoConverter<E, D> {
 

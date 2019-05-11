@@ -1,12 +1,12 @@
-package com.example.tvstore;
+package com.store.car;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TvStoreApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TvStoreApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 }
