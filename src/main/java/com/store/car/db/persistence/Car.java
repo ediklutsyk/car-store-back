@@ -7,6 +7,7 @@ import com.store.car.utils.enums.TransportType;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "car")
@@ -16,14 +17,18 @@ public class Car extends Product implements Serializable {
     private String model;
     private Integer year;
     private String color;
+    @Enumerated(EnumType.STRING)
     private DriveType driveType;
+    @Enumerated(EnumType.STRING)
     private TransportType transportType;
     private Long mileage;
     private Short doorsAmount;
+    @Enumerated(EnumType.STRING)
     private EngineType engineType;
     private Short passengerAmount;
     private Integer imgId;
     private Integer amount;
+    private BigDecimal price;
 
     @Id
     @Override
@@ -136,6 +141,16 @@ public class Car extends Product implements Serializable {
     }
 
     @Override
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    @Override
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Car)) return false;
@@ -156,7 +171,8 @@ public class Car extends Product implements Serializable {
         if (getPassengerAmount() != null ? !getPassengerAmount().equals(car.getPassengerAmount()) : car.getPassengerAmount() != null)
             return false;
         if (getImgId() != null ? !getImgId().equals(car.getImgId()) : car.getImgId() != null) return false;
-        return getAmount() != null ? getAmount().equals(car.getAmount()) : car.getAmount() == null;
+        if (getAmount() != null ? !getAmount().equals(car.getAmount()) : car.getAmount() != null) return false;
+        return getPrice() != null ? getPrice().equals(car.getPrice()) : car.getPrice() == null;
     }
 
     @Override
@@ -174,6 +190,7 @@ public class Car extends Product implements Serializable {
         result = 31 * result + (getPassengerAmount() != null ? getPassengerAmount().hashCode() : 0);
         result = 31 * result + (getImgId() != null ? getImgId().hashCode() : 0);
         result = 31 * result + (getAmount() != null ? getAmount().hashCode() : 0);
+        result = 31 * result + (getPrice() != null ? getPrice().hashCode() : 0);
         return result;
     }
 
@@ -193,6 +210,7 @@ public class Car extends Product implements Serializable {
                 ", passengerAmount=" + passengerAmount +
                 ", imgId=" + imgId +
                 ", amount=" + amount +
+                ", price=" + price +
                 '}';
     }
 }

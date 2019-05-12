@@ -1,6 +1,7 @@
 package com.store.car.service.car;
 
 import com.store.car.db.persistence.Car;
+import com.store.car.db.persistence.User;
 import com.store.car.json.request.CarRequest;
 import com.store.car.json.request.FilterRequest;
 
@@ -14,8 +15,6 @@ public interface CarService {
     Car update(Car car);
 
     void delete(Car car);
-
-    void buy(Integer id);
 
     List<Car> findAll();
 

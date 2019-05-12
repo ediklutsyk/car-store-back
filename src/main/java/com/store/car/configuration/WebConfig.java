@@ -16,7 +16,6 @@ import org.springframework.web.servlet.resource.PathResourceResolver;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-@Configuration
 public class WebConfig implements WebMvcConfigurer {
 
     @Bean

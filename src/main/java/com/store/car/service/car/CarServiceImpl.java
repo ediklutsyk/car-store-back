@@ -2,6 +2,7 @@ package com.store.car.service.car;
 
 import com.store.car.common.Product;
 import com.store.car.db.persistence.Car;
+import com.store.car.db.persistence.User;
 import com.store.car.exceptions.BadRequestException;
 import com.store.car.exceptions.NotFoundException;
 import com.store.car.json.request.CarRequest;
@@ -35,6 +36,7 @@ public class CarServiceImpl implements CarService {
         car.setDoorsAmount(request.getDoorsAmount());
         car.setEngineType(request.getEngineType());
         car.setPassengerAmount(request.getPassengerAmount());
+        car.setImgId(request.getImgId());
         car.setAmount(1);
         return carRepository.save(car);
     }
@@ -47,16 +49,6 @@ public class CarServiceImpl implements CarService {
     @Override
     public void delete(Car car) {
         carRepository.delete(car);
-    }
-
-    @Override
-    public void buy(Integer id) {
-        Product car = findById(id).orElseThrow(() -> new NotFoundException("Car with such an id not found"));
-        if (car.getAmount() < 1) {
-            throw new BadRequestException("This car is not available for buying now");
-        }
-        car.setAmount(car.getAmount() - 1);
-        carRepository.save((Car) car);
     }
 
     @Override

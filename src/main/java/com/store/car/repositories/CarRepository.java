@@ -5,6 +5,9 @@ import com.store.car.utils.enums.DriveType;
 import com.store.car.utils.enums.EngineType;
 import com.store.car.utils.enums.TransportType;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -30,4 +33,9 @@ public interface CarRepository extends JpaRepository<Car, Integer> {
     List<Car> findByEngineTypeIn(List<EngineType> engineTypes);
 
     List<Car> findByPassengerAmountIn(List<Short> amounts);
+
+    @Modifying
+    @Query("update car c set c.amount = :amount where u.id = :id")
+    int updateCarSetAmountForId(@Param("amount") Integer amount,
+                                   @Param("id") Integer id);
 }

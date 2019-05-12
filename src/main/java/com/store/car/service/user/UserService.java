@@ -1,5 +1,6 @@
 package com.store.car.service.user;
 
+import com.store.car.common.Product;
 import com.store.car.db.persistence.User;
 import com.store.car.json.request.UserRequest;
 
@@ -20,4 +21,6 @@ public interface UserService {
     Optional<User> findById(Integer id);
 
     Optional<User> findByToken(String token);
+
+    void buyProduct(User user, Product product);
 }
