@@ -22,6 +22,7 @@ public class Car extends Product implements Serializable {
     private Short doorsAmount;
     private EngineType engineType;
     private Short passengerAmount;
+    private Integer imgId;
     private Integer amount;
 
     @Id
@@ -116,6 +117,14 @@ public class Car extends Product implements Serializable {
         this.passengerAmount = passengerAmount;
     }
 
+    public Integer getImgId() {
+        return imgId;
+    }
+
+    public void setImgId(Integer imgId) {
+        this.imgId = imgId;
+    }
+
     @Override
     public Integer getAmount() {
         return amount;
@@ -146,6 +155,7 @@ public class Car extends Product implements Serializable {
         if (getEngineType() != car.getEngineType()) return false;
         if (getPassengerAmount() != null ? !getPassengerAmount().equals(car.getPassengerAmount()) : car.getPassengerAmount() != null)
             return false;
+        if (getImgId() != null ? !getImgId().equals(car.getImgId()) : car.getImgId() != null) return false;
         return getAmount() != null ? getAmount().equals(car.getAmount()) : car.getAmount() == null;
     }
 
@@ -162,6 +172,7 @@ public class Car extends Product implements Serializable {
         result = 31 * result + (getDoorsAmount() != null ? getDoorsAmount().hashCode() : 0);
         result = 31 * result + (getEngineType() != null ? getEngineType().hashCode() : 0);
         result = 31 * result + (getPassengerAmount() != null ? getPassengerAmount().hashCode() : 0);
+        result = 31 * result + (getImgId() != null ? getImgId().hashCode() : 0);
         result = 31 * result + (getAmount() != null ? getAmount().hashCode() : 0);
         return result;
     }
@@ -180,6 +191,7 @@ public class Car extends Product implements Serializable {
                 ", doorsAmount=" + doorsAmount +
                 ", engineType=" + engineType +
                 ", passengerAmount=" + passengerAmount +
+                ", imgId=" + imgId +
                 ", amount=" + amount +
                 '}';
     }
