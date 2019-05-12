@@ -1,4 +1,4 @@
-package com.store.car.common.entity;
+package com.store.car.common;
 
 public abstract class Product {
 

@@ -1,6 +1,6 @@
 package com.store.car.db.persistence;
 
-import com.store.car.common.entity.Product;
+import com.store.car.common.Product;
 import com.store.car.utils.enums.DriveType;
 import com.store.car.utils.enums.EngineType;
 import com.store.car.utils.enums.TransportType;
