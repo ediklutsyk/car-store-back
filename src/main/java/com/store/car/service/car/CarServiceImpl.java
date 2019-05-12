@@ -1,8 +1,10 @@
 package com.store.car.service.car;
 
+import com.store.car.common.Product;
 import com.store.car.db.persistence.Car;
 import com.store.car.exceptions.BadRequestException;
 import com.store.car.exceptions.NotFoundException;
+import com.store.car.json.request.CarRequest;
 import com.store.car.json.request.FilterRequest;
 import com.store.car.repositories.CarRepository;
 import org.springframework.stereotype.Service;
@@ -21,7 +23,24 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Car save(Car car) {
+    public Car save(CarRequest request) {
+        Car car = new Car();
+        car.setModel(request.getModel());
+        car.setBrand(request.getBrand());
+        car.setYear(request.getYear());
+        car.setColor(request.getColor());
+        car.setDriveType(request.getDriveType());
+        car.setTransportType(request.getTransportType());
+        car.setMileage(request.getMileage());
+        car.setDoorsAmount(request.getDoorsAmount());
+        car.setEngineType(request.getEngineType());
+        car.setPassengerAmount(request.getPassengerAmount());
+        car.setAmount(1);
+        return carRepository.save(car);
+    }
+
+    @Override
+    public Car update(Car car) {
         return carRepository.save(car);
     }
 
@@ -32,12 +51,12 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void buy(Integer id) {
-        Car car = findById(id).orElseThrow(() -> new NotFoundException("Car with such an id not found"));
+        Product car = findById(id).orElseThrow(() -> new NotFoundException("Car with such an id not found"));
         if (car.getAmount() < 1) {
             throw new BadRequestException("This car is not available for buying now");
         }
         car.setAmount(car.getAmount() - 1);
-        save(car);
+        carRepository.save((Car) car);
     }
 
     @Override
