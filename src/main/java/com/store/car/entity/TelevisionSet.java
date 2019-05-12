@@ -21,7 +21,7 @@ public class TelevisionSet extends Product {
     private String sizeWithStand;
     private String weightWithStand;
     private String mainImage;
-    private int amount;
+    private Integer amount;
 
     public String getDiagonal() {
         return diagonal;
@@ -144,12 +144,12 @@ public class TelevisionSet extends Product {
     }
 
     @Override
-    public int getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
     @Override
-    public void setAmount(int amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 
