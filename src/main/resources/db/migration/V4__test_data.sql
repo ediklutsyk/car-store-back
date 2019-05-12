@@ -32,6 +32,8 @@ insert into car (ID,
                  MODEL,
                  PASSENGER_AMOUNT,
                  TRANSPORT_TYPE,
-                 YEAR)
-values (1, 1, 'Brand', 'White', 4, 0, 0, 1, 100500, 'Model', 4, 0, 2000),
-       (2, 1, 'Brand2', 'Black', 4, 1, 1, 2, 100500, 'Model2', 4, 1, 2001)
+                 YEAR,
+                 PRICE)
+values (1, 1, 'Brand', 'White', 4, 0, 0, 1, 100500, 'Model', 4, 0, 2000, 3000),
+       (2, 1, 'Brand2', 'Black', 4, 1, 1, 2, 5000, 'Model2', 4, 1, 2001, 5000),
+       (3, 2, 'Brand3', 'Pink', 2, 3, 0, 3, 1000, 'Model3', 3, 0, 2015, 9000)

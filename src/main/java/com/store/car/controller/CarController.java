@@ -4,6 +4,7 @@ import com.store.car.common.Product;
 import com.store.car.db.persistence.Car;
 import com.store.car.db.persistence.User;
 import com.store.car.exceptions.NotFoundException;
+import com.store.car.json.request.BuyRequest;
 import com.store.car.json.request.CarRequest;
 import com.store.car.json.request.FilterRequest;
 import com.store.car.json.response.MessageResponse;
@@ -11,8 +12,6 @@ import com.store.car.service.car.CarService;
 import com.store.car.service.user.UserService;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -37,10 +36,10 @@ public class CarController extends BaseController {
         return carService.findById(id).orElseThrow(() -> new NotFoundException("Car with such an id not found"));
     }
 
-    @GetMapping(value = "/buy/car/{id}")
-    public MessageResponse buyCar(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Integer id) {
-        Product product = carService.findById(id).orElseThrow(() -> new NotFoundException("Car with such an id not found"));
-        User user = getProfile(request, response);
+    @PostMapping(value = "/buy/car")
+    public MessageResponse buyCar(@RequestBody @Valid BuyRequest request) {
+        Product product = carService.findById(request.getProductId()).orElseThrow(() -> new NotFoundException("Car with such an id not found"));
+        User user = userService.findById(request.getUserId()).orElseThrow(() -> new NotFoundException("No such user"));
         userService.buyProduct(user, product);
         return new MessageResponse("Successfully bought");
     }

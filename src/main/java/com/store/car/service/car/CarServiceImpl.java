@@ -1,10 +1,6 @@
 package com.store.car.service.car;
 
-import com.store.car.common.Product;
 import com.store.car.db.persistence.Car;
-import com.store.car.db.persistence.User;
-import com.store.car.exceptions.BadRequestException;
-import com.store.car.exceptions.NotFoundException;
 import com.store.car.json.request.CarRequest;
 import com.store.car.json.request.FilterRequest;
 import com.store.car.repositories.CarRepository;

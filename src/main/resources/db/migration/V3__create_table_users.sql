@@ -7,5 +7,4 @@ create table user (
   role     varchar(255),
   token    varchar(255),
   primary key (id)
-)
---
+);

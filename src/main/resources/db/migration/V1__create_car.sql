@@ -12,5 +12,6 @@ create table car (
   passenger_amount smallint,
   transport_type   integer,
   year             integer,
+  price            decimal(19, 2),
   primary key (id)
 )

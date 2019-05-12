@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,8 +35,8 @@ public interface CarRepository extends JpaRepository<Car, Integer> {
 
     List<Car> findByPassengerAmountIn(List<Short> amounts);
 
-    @Modifying
-    @Query("update car c set c.amount = :amount where u.id = :id")
-    int updateCarSetAmountForId(@Param("amount") Integer amount,
-                                   @Param("id") Integer id);
+    @Modifying(clearAutomatically = true)
+    @Transactional
+    @Query("update Car c set c.amount = :amount where c.id = :id")
+    void updateCarSetAmountForId(@Param("amount") Integer amount, @Param("id") Integer id);
 }
