@@ -8,13 +8,15 @@ public class LoginResponse {
     private Integer id;
     private String email;
     private String token;
-    private BigDecimal amount;
+    private BigDecimal balance;
+    private String role;
 
     public LoginResponse(User user) {
         this.id = user.getId();
         this.email = user.getEmail();
         this.token = user.getToken();
-        this.amount = user.getBalance();
+        this.balance = user.getBalance();
+        this.role = user.getRole();
     }
 
     public Integer getId() {
@@ -41,11 +43,19 @@ public class LoginResponse {
         this.token = token;
     }
 
-    public BigDecimal getAmount() {
-        return amount;
+    public BigDecimal getBalance() {
+        return balance;
     }
 
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

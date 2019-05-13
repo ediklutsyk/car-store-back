@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class CarServiceImpl implements CarService {
@@ -61,31 +60,40 @@ public class CarServiceImpl implements CarService {
     public List<Car> filter(FilterRequest request) {
         List<Car> result = new ArrayList<>();
         if (request.getModel() != null && !request.getModel().isEmpty()) {
-            result.addAll(carRepository.findByModelLike(request.getModel()));
+            filterByParams(result, carRepository.findByModelContainingIgnoreCase(request.getModel()));
         }
         if (request.getBrands() != null && !request.getBrands().isEmpty()) {
-            result.addAll(carRepository.findByBrandIn(request.getBrands()));
+            filterByParams(result, carRepository.findByBrandIn(request.getBrands()));
         }
-        if (request.getBrands() != null && !request.getBrands().isEmpty()) {
-            result.addAll(carRepository.findByYearIn(request.getYears()));
+        if (request.getBrands() != null && !request.getYears().isEmpty()) {
+            filterByParams(result, carRepository.findByYearIn(request.getYears()));
         }
-        if (request.getBrands() != null && !request.getBrands().isEmpty()) {
-            result.addAll(carRepository.findByColorIn(request.getColors()));
+        if (request.getBrands() != null && !request.getColors().isEmpty()) {
+            filterByParams(result, carRepository.findByColorIn(request.getColors()));
         }
-        if (request.getBrands() != null && !request.getBrands().isEmpty()) {
-            result.addAll(carRepository.findByDriveTypeIn(request.getDriveTypes()));
+        if (request.getBrands() != null && !request.getDriveTypes().isEmpty()) {
+            filterByParams(result, carRepository.findByDriveTypeIn(request.getDriveTypes()));
         }
-        if (request.getBrands() != null && !request.getBrands().isEmpty()) {
-            result.addAll(carRepository.findByTransportTypeIn(request.getTransportTypes()));
+        if (request.getBrands() != null && !request.getTransportTypes().isEmpty()) {
+            filterByParams(result, carRepository.findByTransportTypeIn(request.getTransportTypes()));
         }
-        if (request.getBrands() != null && !request.getBrands().isEmpty()) {
-            result.addAll(carRepository.findByEngineTypeIn(request.getEngineTypes()));
+        if (request.getBrands() != null && !request.getEngineTypes().isEmpty()) {
+            filterByParams(result, carRepository.findByEngineTypeIn(request.getEngineTypes()));
         }
-        if (request.getBrands() != null && !request.getBrands().isEmpty()) {
-            result.addAll(carRepository.findByPassengerAmountIn(request.getPassengerAmount()));
+        if (request.getBrands() != null && !request.getPassengerAmount().isEmpty()) {
+            filterByParams(result, carRepository.findByPassengerAmountIn(request.getPassengerAmount()));
         }
-        return result.stream()
-                .distinct()
-                .collect(Collectors.toList());
+//        return result.stream()
+//                .distinct()
+//                .collect(Collectors.toList());
+        return result;
+    }
+
+    private void filterByParams(List<Car> filterResult, List<Car> filterParams) {
+        if (filterResult.isEmpty()) {
+            filterResult.addAll(filterParams);
+        } else {
+            filterResult.retainAll(filterParams);
+        }
     }
 }

@@ -19,11 +19,11 @@ public interface CarRepository extends JpaRepository<Car, Integer> {
 
     Optional<Car> findById(Integer id);
 
-    List<Car> findByModelLike(String model);
+    List<Car> findByModelContainingIgnoreCase(String model);
 
     List<Car> findByBrandIn(List<String> brands);
 
-    List<Car> findByYearIn(List<String> years);
+    List<Car> findByYearIn(List<Integer> years);
 
     List<Car> findByColorIn(List<String> colors);
 

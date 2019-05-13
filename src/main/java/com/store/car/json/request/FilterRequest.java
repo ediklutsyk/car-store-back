@@ -10,7 +10,7 @@ public class FilterRequest {
 
     private List<String> brands;
     private String model;
-    private List<String> years;
+    private List<Integer> years;
     private List<String> colors;
     private List<DriveType> driveTypes;
     private List<TransportType> transportTypes;
@@ -33,11 +33,11 @@ public class FilterRequest {
         this.brands = brands;
     }
 
-    public List<String> getYears() {
+    public List<Integer> getYears() {
         return years;
     }
 
-    public void setYears(List<String> years) {
+    public void setYears(List<Integer> years) {
         this.years = years;
     }
 
